@@ -1,0 +1,21 @@
+version: '3'
+services:
+        reactjs-web:
+                build: 
+                   context: .
+                   dockerfile: Dockerfile.DEV
+                ports:
+                        - "3000:3000"
+                volumes:
+                        - /app/usr/reactjs/node_modules
+                        - .:/app/usr/reactjs
+
+        reactjs-web-test:
+                build: 
+                   context: .
+                   dockerfile: Dockerfile.DEV
+                volumes:
+                        - /app/usr/reactjs/node_modules
+                        - .:/app/usr/reactjs
+                command: ["npm","run","test"]
+
