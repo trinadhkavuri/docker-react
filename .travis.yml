@@ -1,0 +1,8 @@
+sudo : required
+services:
+        - docker
+before_install:
+        - docer build -t trinadhkavuri/reactjs -f Dockerfile.dev .
+
+script:
+        - docker run -e CI=true trinadhkavuri/reactjs npm run test -- --coverage
